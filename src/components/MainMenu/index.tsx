@@ -6,7 +6,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { useState } from "react";
 import { Menu } from "antd";
@@ -64,13 +64,33 @@ const items: MenuItem[] = [
 ];
 const Comp: React.FC = () => {
   const navigateTo = useNavigate();
-
+  const currentRoute = useLocation();
   const menuClick = (e: { key: string }) => {
-    console.log(e);
+    // console.log(e);
+    //点击跳转到对应的路由
     navigateTo(e.key);
   };
+
+  //解决刷新多级自动关闭的问题
+  let firstOpenKey: string = "";
+  function findKey(obj: { key: string }) {
+    // console.log(obj);
+    return obj.key === currentRoute.pathname;
+  }
+
+  for (let i = 0; i < items.length; i++) {
+    if (
+      items[i]!["children"] &&
+      items[i]!["children"].length > 0 &&
+      items[i]!["children"].find(findKey)
+    ) {
+      firstOpenKey = items[i]!.key as string;
+      break;
+    }
+  }
+
   //设置只有一个展开项
-  const [openKeys, setOpenKeys] = useState([""]);
+  const [openKeys, setOpenKeys] = useState([firstOpenKey]);
   const handleOpenChange = (keys: string[]) => {
     // console.log(keys)
     setOpenKeys([keys[keys.length - 1]]);
@@ -78,7 +98,7 @@ const Comp: React.FC = () => {
   return (
     <Menu
       theme="dark"
-      defaultSelectedKeys={["/about"]}
+      defaultSelectedKeys={[currentRoute.pathname]}
       mode="inline"
       items={items}
       onClick={menuClick}

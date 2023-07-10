@@ -1,0 +1,24 @@
+.loginBox .ant-input,
+.ant-input-password {
+  background-color: rgba(255, 255, 255, 0);
+  border-color: #1890ff;
+  color: #fff;
+  line-height: 38px;
+}
+.ant-input-affix-wrapper .anticon.ant-input-password-icon,
+.ant-input-affix-wrapper .anticon.ant-input-password-icon:hover {
+  color: #1890ff;
+}
+.captchBox {
+  display: flex;
+}
+.captchBox .captchImg {
+  margin-left: 20px;
+  cursor: pointer;
+}
+.buttonLogin {
+  height: 38px;
+}
+.loginBox .ant-input::-webkit-input-placeholder {
+  color: rgba(24, 144, 255, .5);
+}
