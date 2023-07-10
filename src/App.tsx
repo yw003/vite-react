@@ -13,8 +13,8 @@ function App() {
     <div>
       {/* <Comp1></Comp1> */}
       {/* <Comp2></Comp2> */}
-      <Link to="/home">home</Link>
-      <Link to="/about">about</Link>
+      {/* <Link to="/home">home</Link>
+      <Link to="/about">about</Link> */}
       {outlet}
     </div>
   );
