@@ -23,9 +23,9 @@ const view = () => {
   const captchaChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCaptchaVal(e.target.value);
   };
-  const goLogin= ()=>{
-    console.log(usernameVal,passwordVal,captchaVal);
-  }
+  const goLogin = () => {
+    console.log(usernameVal, passwordVal, captchaVal);
+  };
   return (
     <div className={styles.loginPage}>
       {/* 存放背景 */}
@@ -50,7 +50,12 @@ const view = () => {
                 />
               </div>
             </div>
-            <Button type="primary" className="buttonLogin" block onClick={goLogin}>
+            <Button
+              type="primary"
+              className="buttonLogin"
+              block
+              onClick={goLogin}
+            >
               登录
             </Button>
           </Space>

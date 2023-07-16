@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { Component } from "react";
 
-export default function page301() {
-  return (
-    <div>page301</div>
-  )
+interface Iprops {}
+interface IState {
+  name: String;
 }
+class Page301 extends Component<Iprops, IState> {
+  state = {
+    name: "123",
+  };
+  render() {
+    return <div>301</div>;
+  }
+}
+export default Page301;
